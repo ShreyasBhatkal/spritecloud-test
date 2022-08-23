@@ -8,8 +8,6 @@ class TestCase4:
 
     URL = 'http://www.uitestingplayground.com/'
 
-    # SEARCH_INPUT = (By.PARTIAL_LINK_TEXT, 'Text Input')
-
     def __init__(self, browser):
         self.browser = browser
 
@@ -25,7 +23,8 @@ class TestCase4:
     def sampleApp(self):
 
         try:
-            login_status = self.browser.find_element(By.ID, 'loginstatus').get_attribute('class')
+            login_status = self.browser.find_element(
+                By.ID, 'loginstatus').get_attribute('class')
             loginBtn = self.browser.find_element(By.ID, 'login').text
             if login_status == 'text-info' and loginBtn == "Log In":
                 pass
@@ -43,9 +42,10 @@ class TestCase4:
 
         except:
             return False
-        
+
         try:
-            login_status = self.browser.find_element(By.ID, 'loginstatus').get_attribute('class')
+            login_status = self.browser.find_element(
+                By.ID, 'loginstatus').get_attribute('class')
             loginBtn = self.browser.find_element(By.ID, 'login').text
             if login_status == 'text-success' and loginBtn == "Log Out":
                 return True
@@ -54,14 +54,8 @@ class TestCase4:
         except:
             return False
 
-
     # Negative
+
     @pytest.mark.xfail
     def x_sampleApp(self):
-        self.browser.refresh()
-        findField = self.browser.find_element(By.CLASS_NAME, 'form-control')
-        findField.send_keys()
-        self.browser.implicitly_wait(10)
-        findBtn = self.browser.find_element(By.ID, "updatingButton")
-        findBtn.send_keys(Keys.RETURN)
-        return findBtn.text
+        pass

@@ -7,8 +7,6 @@ class TestCase1:
 
     URL = 'http://www.uitestingplayground.com/'
 
-    # SEARCH_INPUT = (By.PARTIAL_LINK_TEXT, 'Text Input')
-
     def __init__(self, browser):
         self.browser = browser
 

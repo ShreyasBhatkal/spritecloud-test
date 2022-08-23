@@ -37,7 +37,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
   # Initialize WebDriver
   if config_browser == 'chrome':
-    driver = Firefox()
+    driver = Chrome()
   elif config_browser == 'firefox':
     driver = Firefox()
   else:

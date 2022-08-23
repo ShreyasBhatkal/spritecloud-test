@@ -26,6 +26,19 @@ def test_case1(browser):
     assert ret_text == PHRASE
 
 
+def test_case1x(browser):
+    # Set up test case data
+    PHRASE = 'Text1234'
+
+    # Search for the phrase
+    search_page = TestCase1(browser)
+    search_page.load()
+    search_page.search()
+    ret_text = search_page.x_text_input(PHRASE)
+
+    assert ret_text == PHRASE
+
+
 def test_case2(browser):
     search_page = TestCase2(browser)
     search_page.load()
