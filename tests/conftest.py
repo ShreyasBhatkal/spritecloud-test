@@ -2,6 +2,15 @@ import json
 import pytest
 
 from selenium.webdriver import Chrome, Firefox
+from selenium import webdriver
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+
+
+
 
 
 CONFIG_PATH = 'tests/config.json'
@@ -37,7 +46,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
   # Initialize WebDriver
   if config_browser == 'chrome':
-    driver = Chrome()
+    driver = webdriver.Chrome(chrome_options=chrome_options)
   elif config_browser == 'firefox':
     driver = Firefox()
   else:
