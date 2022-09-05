@@ -13,15 +13,10 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 options = Options()
-CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
-
-options.binary_location = "/usr/bin/google-chrome"
-options.add_argument('--remote-debugging-port=9222')
-options.add_argument("--disable-gpu")
-options.add_argument("--no-sandbox")
-options.add_argument('headless')
-options.add_argument('window-size=1200x600')
-
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+ 
 
 CONFIG_PATH = 'tests/config.json'
 DEFAULT_WAIT_TIME = 10
@@ -56,7 +51,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options, executable_path=CHROMEDRIVER_PATH)
+      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     elif config_browser == 'firefox':
         driver = Firefox()
