@@ -8,7 +8,7 @@ from selenium import webdriver
 import os 
 
 options = webdriver.ChromeOptions()
-CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
+CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
 
 chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', "chromedriver")
 options = webdriver.ChromeOptions()
@@ -52,7 +52,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = webdriver.Chrome(ChromeDriverManager().install())
+      driver = webdriver.Chrome()
     elif config_browser == 'firefox':
         driver = Firefox()
     else:
