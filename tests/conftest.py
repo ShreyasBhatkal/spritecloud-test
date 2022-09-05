@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 options = Options()
 CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
 
-options.binary_location = "/usr/bin/google-chrome"
+options.binary_location = "/snap/bin/chromium"
 options.add_argument('--remote-debugging-port=9222')
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
