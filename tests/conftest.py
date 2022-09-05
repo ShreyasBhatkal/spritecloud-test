@@ -1,12 +1,8 @@
 import json
 import pytest
-
-from selenium.webdriver import Chrome, Firefox
-from webdriver_manager.chrome import ChromeDriverManager
-
-from selenium import webdriver
 import os 
 
+from selenium.webdriver import Chrome, Firefox
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -17,7 +13,6 @@ options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
  
-
 CONFIG_PATH = 'tests/config.json'
 DEFAULT_WAIT_TIME = 10
 SUPPORTED_BROWSERS = ['chrome', 'firefox']
