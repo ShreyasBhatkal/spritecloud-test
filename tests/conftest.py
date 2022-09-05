@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 options = Options()
 CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
 
-options.binary_location = "/snap/bin/chromium"
+options.binary_location = "/usr/bin/google-chrome"
 options.add_argument('--remote-debugging-port=9222')
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
@@ -56,7 +56,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+      driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options, executable_path=CHROMEDRIVER_PATH)
 
     elif config_browser == 'firefox':
         driver = Firefox()
