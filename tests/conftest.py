@@ -6,18 +6,18 @@ from selenium.webdriver import Chrome, Firefox
 
 from selenium import webdriver
 import os 
-options = webdriver.ChromeOptions()
-CHROMEDRIVER_PATH = '/app/.chromedriver/bin/chromedriver'
-GOOGLE_CHROME_SHIM = os.getenv('GOOGLE_CHROME_SHIM',"chromedriver")
 
-options.binary_location = '/app/.apt/usr/bin/google-chrome-stable'
-options.add_argument("start-maximized")
-options.add_argument('--disable-gpu')
-options.add_argument("disable-infobars")
-options.add_argument("--disable-extensions")
+options = webdriver.ChromeOptions()
+CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+
+chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', "chromedriver")
+options = webdriver.ChromeOptions()
+options.binary_location = chrome_bin
+options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-# browser = webdriver.Chrome( options=options)
+options.add_argument('headless')
+options.add_argument('window-size=1200x600')
+
 
 CONFIG_PATH = 'tests/config.json'
 DEFAULT_WAIT_TIME = 10
@@ -52,7 +52,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = webdriver.Chrome( options=options)
+      driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
     elif config_browser == 'firefox':
         driver = Firefox()
     else:
