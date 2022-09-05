@@ -30,12 +30,8 @@ jobs:
       run: sudo apt install -y chromium-browser
     - name: Install all necessary packages
       run: |
-<<<<<<< HEAD
         python -m pip install --upgrade pip
         pip selenium pytest
-=======
-        pip install requests beautifulsoup4 pandas webdriver-manager selenium
->>>>>>> d96bb77 (update python-app.yml)
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
