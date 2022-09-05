@@ -2,7 +2,7 @@ import json
 import pytest
 
 from selenium.webdriver import Chrome, Firefox
-
+from webdriver_manager.chrome import ChromeDriverManager
 
 from selenium import webdriver
 import os 
@@ -52,7 +52,7 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+      driver = webdriver.Chrome(ChromeDriverManager().install())
     elif config_browser == 'firefox':
         driver = Firefox()
     else:
