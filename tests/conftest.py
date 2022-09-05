@@ -7,16 +7,16 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 import os 
 
-# options = webdriver.ChromeOptions()
-# CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+options = webdriver.ChromeOptions()
+CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
 
-# chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', "chromedriver")
-# options = webdriver.ChromeOptions()
-# options.binary_location = chrome_bin
-# options.add_argument("--disable-gpu")
-# options.add_argument("--no-sandbox")
-# options.add_argument('headless')
-# options.add_argument('window-size=1200x600')
+options = webdriver.ChromeOptions()
+options.binary_location = "/usr/bin/google-chrome"
+options.add_argument('--remote-debugging-port=9222')
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
+options.add_argument('headless')
+options.add_argument('window-size=1200x600')
 
 
 CONFIG_PATH = 'tests/config.json'
@@ -52,7 +52,8 @@ def config_wait_time(config):
 def browser(config_browser, config_wait_time):
     # Initialize WebDriver
     if config_browser == 'chrome':
-      driver = Chrome()
+      driver = driver = webdriver.Chrome(options=options, executable_path="/usr/local/bin/chromedriver")
+
     elif config_browser == 'firefox':
         driver = Firefox()
     else:
