@@ -8,7 +8,7 @@ from selenium import webdriver
 import os 
 
 options = webdriver.ChromeOptions()
-CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+CHROMEDRIVER_PATH = "/usr/local/bin/chromedriver"
 
 chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', "chromedriver")
 options = webdriver.ChromeOptions()
